@@ -1,0 +1,43 @@
+<div *ngIf="dataItems" class="scroll-table-editable" @componentAnimation>
+    <table mat-table [dataSource]="dataSource">
+
+        <ng-container *ngFor="let column of config.columns" [matColumnDef]="column.key">
+            <!-- Header -->
+            <th mat-header-cell *matHeaderCellDef>
+                <ng-container *ngIf="column.type == 'selection'">
+                    <!--<mat-checkbox
+                        (change)="$event ? masterToggle() : null"
+                        [checked]="selection.hasValue() && isAllSelected()"
+                        [indeterminate]="selection.hasValue() && !isAllSelected()"
+                        [aria-label]="checkboxLabel()">
+                    </mat-checkbox>-->
+                </ng-container>
+                <ng-container>
+                    {{ column.title }}
+                </ng-container>
+            </th>
+
+            <td mat-cell *matCellDef="let item">
+                <mia-string-column *ngIf="column.type == 'string'" [column]="column" [item]="item"></mia-string-column>
+                <mia-date-column *ngIf="column.type == 'date'" [column]="column" [item]="item"></mia-date-column>
+
+                <mia-input-editable-column *ngIf="column.type == 'input-editable'" [column]="column" [item]="item" [configEdit]="config"></mia-input-editable-column>
+                <mia-date-editable-column *ngIf="column.type == 'date-editable'" [column]="column" [item]="item" [configEdit]="config"></mia-date-editable-column>
+                <mia-select-editable-column *ngIf="column.type == 'select-editable'" [column]="column" [item]="item" [configEdit]="config"></mia-select-editable-column>
+                <mia-select-service-editable-column *ngIf="column.type == 'select-service-editable'" [column]="column" [item]="item" [configEdit]="config"></mia-select-service-editable-column>
+                <mia-remove-editable-column *ngIf="column.type == 'remove-editable'" [column]="column" [item]="item" [configEdit]="config" (remove)="onRemove($event)"></mia-remove-editable-column>
+                <mia-custom-editable-column *ngIf="column.type == 'custom-editable'" [column]="column" [item]="item" [configEdit]="config"></mia-custom-editable-column>
+            </td>
+
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayColumns;"></tr>
+        
+        <!-- Row shown when there is no matching data. -->
+        <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="100">No data</td>
+        </tr>
+    </table>
+    <button *ngIf="config.hasAdd" class="editable-table-button-add" (click)="onClickAdd()">Add</button>
+</div>

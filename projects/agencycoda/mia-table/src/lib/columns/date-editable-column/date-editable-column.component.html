@@ -1,0 +1,5 @@
+<mat-form-field *ngIf="input" class="{{ column.extra?.classes }}">
+    <input matInput [matDatepicker]="picker" [formControl]="input" [placeholder]="column.extra?.placeholder ? column.extra.placeholder : ''">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>

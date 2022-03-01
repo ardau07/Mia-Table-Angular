@@ -1,0 +1,6 @@
+    <mat-checkbox
+        *ngIf="selection"
+        (click)="$event.stopPropagation()"
+        (change)="$event ? selection.toggle(this.item) : null"
+        [checked]="selection.isSelected(this.item)">
+    </mat-checkbox>

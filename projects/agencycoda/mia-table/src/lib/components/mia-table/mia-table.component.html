@@ -1,0 +1,90 @@
+<!--<div class="search-filter">
+    <mat-form-field appearance="outline" class="input-search-table" *ngIf="hasSearch">
+        <input matInput name="input" (keyup)="applyFilter($event)" placeholder="Search..." #input>
+        <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+
+    <button mat-stroked-button [matMenuTriggerFor]="filters" *ngIf="hasFilters" class="button-filter" matTooltip="Filters"><mat-icon>tune</mat-icon></button>
+    <button mat-stroked-button [matMenuTriggerFor]="columns" *ngIf="hasColumnEdit" class="button-filter" matTooltip="Edit Columns"><mat-icon>view_column</mat-icon></button>
+</div>-->
+
+<div *ngIf="_isLoading" class="table-loading">
+    <mia-loading-squares [color]="config.loadingColor"></mia-loading-squares>
+</div>
+
+<div *ngIf="(!config.hasEmptyScreen && !_isLoading) || (config.hasEmptyScreen && !_isLoading && dataItems && dataItems!.data.length > 0)" class="scroll-table" @componentAnimation>
+    <div class="header-table-select animated" [ngClass]="{'header-table-select-active': selection.hasValue()}">
+        <div class="selects">{{ this.selection.selected.length }} selected</div>
+        <div class="buttons">
+            <button mat-button color="warn" (click)="onClickDeleteBulk()"><mat-icon>delete</mat-icon> Delete</button>
+        </div>
+    </div>
+    <table *ngIf="dataItems" mat-table [dataSource]="dataItems.data">
+
+        <ng-container *ngFor="let column of config.columns" [matColumnDef]="column.key">
+            <!-- Header -->
+            <th mat-header-cell *matHeaderCellDef>
+                <ng-container *ngIf="column.type == 'selection'">
+                    <!--<mat-checkbox
+                        (change)="$event ? masterToggle() : null"
+                        [checked]="selection.hasValue() && isAllSelected()"
+                        [indeterminate]="selection.hasValue() && !isAllSelected()"
+                        [aria-label]="checkboxLabel()">
+                    </mat-checkbox>-->
+                </ng-container>
+                <ng-container>
+                    {{ column.title }}
+                </ng-container>
+            </th>
+
+            <td mat-cell *matCellDef="let item">
+                <mia-selection-column *ngIf="column.type == 'selection'" [column]="column" [item]="item" [selection]="selection"></mia-selection-column>
+                <mia-string-column *ngIf="column.type == 'string'" [column]="column" [item]="item"></mia-string-column>
+                <mia-photo-column *ngIf="column.type == 'photo'" [column]="column" [item]="item"></mia-photo-column>
+                <mia-user-column *ngIf="column.type == 'user'" [column]="column" [item]="item"></mia-user-column>
+                <mia-date-column *ngIf="column.type == 'date'" [column]="column" [item]="item"></mia-date-column>
+                <mia-more-column *ngIf="column.type == 'more'" [column]="column" [item]="item" [config]="config"></mia-more-column>
+                <mia-more-options-column *ngIf="column.type == 'more-options'" [column]="column" [item]="item" [config]="config"></mia-more-options-column>
+                <mia-status-column *ngIf="column.type == 'status'" [column]="column" [item]="item"></mia-status-column>
+                <mia-icon-toggle-column *ngIf="column.type == 'icon-toggle'" [column]="column" [item]="item" [config]="config"></mia-icon-toggle-column>
+                <mia-custom-column *ngIf="column.type == 'custom'" [column]="column" [item]="item" [config]="config"></mia-custom-column>
+                <mia-item-relation-column *ngIf="column.type == 'item-relation'" [column]="column" [item]="item" [config]="config"></mia-item-relation-column>
+                <mia-text-column *ngIf="column.type == 'text'" [column]="column" [item]="item"></mia-text-column>
+                <mia-array-column *ngIf="column.type == 'array'" [column]="column" [item]="item"></mia-array-column>
+            </td>
+
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayColumns;" (click)="onClickItem(row)"></tr>
+        
+        <!-- Row shown when there is no matching data. -->
+        <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="100">No data matching</td>
+        </tr>
+    </table>
+
+    <mat-paginator *ngIf="dataItems" [pageIndex]="config.query.pageCurrent-1" [length]="dataItems!.total" [pageSize]="config.query.itemPerPage" [pageSizeOptions]="[5, 10, 25, 50, 100]" (page)="onPageChange($event)"></mat-paginator>
+</div>
+
+<div *ngIf="config.hasEmptyScreen && !_isLoading && dataItems && dataItems!.data.length <= 0" class="empty-screen">
+    <div class="empty-screen-container">
+        <img *ngIf="config.emptyScreenImage" [src]="config.emptyScreenImage" alt="Empty Screen" />
+        <h2 *ngIf="config.emptyScreenTitle" class="title-header-h2">{{ config.emptyScreenTitle }}</h2>
+        <p *ngIf="config.emptyScreenText">{{ config.emptyScreenText }}</p>
+    </div>
+</div>
+
+
+<!--<mat-menu #filters="matMenu" class="mat-menu-table-element">
+    <app-table-menu-element
+        [items]="['Filter 1','Filter 2','Filter 3','Filter 4','Filter 5']">
+    </app-table-menu-element>
+</mat-menu>
+
+<mat-menu #columns="matMenu" class="mat-menu-table-element">
+    <app-table-menu-element
+        [title]="'Edit Columns Table'"
+        [items]="displayedColumns">
+    </app-table-menu-element>
+</mat-menu>-->

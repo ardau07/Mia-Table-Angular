@@ -1,0 +1,17 @@
+{
+  "name": "@agencycoda/mia-table",
+  "version": "13.1.0",
+  "peerDependencies": {
+    "@angular/common": ">=13.0.0",
+    "@angular/core": ">=13.0.0",
+    "@angular/cdk": ">=13.0.0",
+    "@angular/material": ">=13.0.0",
+    "@angular/material-moment-adapter": ">=13.0.0",
+    "@agencycoda/mia-core": ">=13.0.0",
+    "@agencycoda/mia-loading": ">=0.0.2",
+    "@ngx-pwa/local-storage": ">=13.0.0"
+  },
+  "dependencies": {
+    "tslib": "^2.0.0"
+  }
+}

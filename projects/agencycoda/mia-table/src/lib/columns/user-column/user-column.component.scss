@@ -1,0 +1,45 @@
+.user-avatar-component{
+    display: flex;
+    align-items: center;
+    position: relative;
+    .avatar{
+        width: 40px; min-width: 40px;
+        height: 40px; min-height: 40px;
+        border-radius: 40px;
+        overflow: hidden;
+        margin-right: 16px;
+        img {
+            width: 40px; min-width: 40px;
+            height: 40px; min-height: 40px;
+        }
+    }
+    .texts{
+        .user{
+            font-size: 1.1em;
+        }
+        .body-2{
+            color: rgb(99, 99, 99);
+            font-size: 0.9em;
+        }
+    }
+    .check{
+        position: absolute;
+        border: 2px solid white;
+        border-radius: 200px;
+        top: 0px;
+        left: 0px;
+        color: #24b524;
+        background-color: #d7ffa3;
+        width: 1em;
+        height: 1em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        mat-icon{
+            line-height: 1em;
+            font-size: 1em;
+            width: 1em;
+            height: 1em;
+        }
+    }
+}

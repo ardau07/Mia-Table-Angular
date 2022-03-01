@@ -1,0 +1,15 @@
+<div [matMenuTriggerFor]="editColumnsMenu">
+    <ng-content></ng-content>
+</div>
+
+<mat-menu #editColumnsMenu="matMenu" class="mat-menu-list">
+    <div class="content" (click)="$event.stopPropagation()" [ngClass]="{'is-multiple-select': true}">
+        <mat-selection-list [multiple]="true" (selectionChange)="onChange($event)">
+            <mat-list-option *ngFor="let column of config.columns" [value]="column" [selected]="column.isShow">
+                <span *ngIf="column.title == '' || column.title == undefined">{{ column.key }}</span>
+                <span *ngIf="column.title != '' && column.title != undefined">{{ column.title }}</span>
+            </mat-list-option>
+        </mat-selection-list>
+    </div>
+
+</mat-menu>

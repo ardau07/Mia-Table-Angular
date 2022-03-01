@@ -1,0 +1,3 @@
+<span *ngFor="let item of getArray(); let index = index">
+    <span *ngIf="index > 0">|</span> {{ getFieldValueByKeyAndItem(item) }}
+</span>

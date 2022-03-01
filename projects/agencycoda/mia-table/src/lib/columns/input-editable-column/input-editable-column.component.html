@@ -1,0 +1,3 @@
+<mat-form-field *ngIf="input">
+    <input matInput type="text" [formControl]="input" [placeholder]="column.extra && column.extra.placeholder ? column.extra.placeholder : ''" />
+</mat-form-field>

@@ -1,0 +1,5 @@
+<mat-form-field *ngIf="input">
+    <mat-select [formControl]="input" [placeholder]="column.extra && column.extra.placeholder ? column.extra.placeholder : ''">
+        <mat-option *ngFor="let option of column.extra.options" [value]="option.id"> {{ option.title }} </mat-option>
+    </mat-select>
+</mat-form-field>

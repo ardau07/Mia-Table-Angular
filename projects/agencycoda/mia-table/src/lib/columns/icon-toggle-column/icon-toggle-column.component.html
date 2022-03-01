@@ -1,0 +1,3 @@
+<button mat-button (click)="clickButton($event)">
+    <mat-icon *ngIf="getIcon() != ''" [ngStyle]="{'color': getColor()}">{{ getIcon() }}</mat-icon>
+</button>

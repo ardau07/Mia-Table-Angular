@@ -1,0 +1,6 @@
+<mat-form-field *ngIf="input">
+    <mat-select [formControl]="input" [placeholder]="column.extra && column.extra.placeholder ? column.extra.placeholder : ''">
+        <mat-option *ngIf="column.extra.is_optional" [value]="undefined"> {{ column.extra.optional_title }} </mat-option>
+        <mat-option *ngFor="let option of items" [value]="option.id"> {{ getDisplayItem(option, column.extra.field_display) }} </mat-option>
+    </mat-select>
+</mat-form-field>

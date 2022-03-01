@@ -1,0 +1,121 @@
+mat-chip{
+    background-color: rgba($color: #e0e0e0, $alpha: 0.4) !important;
+    color: rgba(0,0,0,.87);
+}
+.success{
+    background-color: rgba($color: #24b524, $alpha: 0.1) !important;
+    color: #24b524 !important;
+}
+.blue{
+    background-color: rgba($color: #2944dd, $alpha: 0.1) !important;
+    color: #2944dd !important;
+}
+.pink{
+    background-color: rgba($color: #df1cce, $alpha: 0.1) !important;
+    color: #df1cce !important;
+}
+.cyan{
+    background-color: rgba($color: #60d2ee, $alpha: 0.1) !important;
+    color: #60d2ee !important;
+}
+.violet{
+    background-color: rgba($color: #673ab7, $alpha: 0.1) !important;
+    color: #673ab7 !important;
+}
+.error{
+    background-color: rgba($color: #f44336, $alpha: 0.1) !important;
+    color: #f44336 !important;
+}
+.warning{
+    background-color: rgba($color: #ffd740, $alpha: 0.1) !important;
+    color: #ffd740 !important;
+}
+
+
+.flat-style{
+    mat-chip{
+        background-color: #e0e0e0;
+        color: rgba(0,0,0,.87);
+    }
+    .success{
+        background-color: #24b524 !important;
+        color: white !important;
+    }
+    .blue{
+        background-color: #2944dd !important;
+        color: white !important;
+    }
+    .pink{
+        background-color: #df1cce !important;
+        color: white !important;
+    }
+    .cyan{
+        background-color: #60d2ee !important;
+        color: white !important;
+    }
+    .success{
+        background-color: #24b524 !important;
+        color: white !important;
+    }
+    .violet{
+        background-color: #673ab7 !important;
+        color: white !important;
+    }
+    .error{
+        background-color: #f44336 !important;
+        color: white !important;
+    }
+    .warning{
+        background-color: #ffd740 !important;
+        color: white !important;
+    }
+}
+
+
+.stroked-style{
+    mat-chip{
+        border: 1px solid #e0e0e0;
+        background-color: transparent !important;
+        color: rgba(0,0,0,.60);
+    }
+    .success{
+        border: 1px solid #24b524;
+        background-color: transparent !important;
+        color: #24b524 !important;
+    }
+    .blue{
+        border: 1px solid #2944dd;
+        background-color: transparent !important;
+        color: #2944dd !important;
+    }
+    .pink{
+        border: 1px solid #df1cce;
+        background-color: transparent !important;
+        color: #df1cce !important;
+    }
+    .cyan{
+        border: 1px solid #60d2ee;
+        background-color: transparent !important;
+        color: #60d2ee !important;
+    }
+    .success{
+        border: 1px solid #24b524;
+        background-color: transparent !important;
+        color: #24b524 !important;
+    }
+    .violet{
+        border: 1px solid #673ab7;
+        background-color: transparent !important;
+        color: #673ab7 !important;
+    }
+    .error{
+        border: 1px solid #f44336;
+        background-color: transparent !important;
+        color: #f44336 !important;
+    }
+    .warning{
+        border: 1px solid #ffd740;
+        background-color: transparent !important;
+        color: #ffd740 !important;
+    }
+}
